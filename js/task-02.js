@@ -9,5 +9,14 @@ const ingredients = [
 
 const list = document.querySelector("#ingredients");
 
-const res = ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("");
-list.insertAdjacentHTML("beforeend", res);
+const makeIngradientList = (array) => {
+	return array.map((item) => {
+		const ingredient = document.createElement("li");
+		ingredient.classList.add("item");
+		ingredient.textContent = item;
+		return ingredient;
+	});
+};
+const elements = makeIngradientList(ingredients);
+console.log(ingredients);
+list.append(...elements);
